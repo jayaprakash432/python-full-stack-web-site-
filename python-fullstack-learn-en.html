@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn Python Full Stack: Notes and Free Links</title>
+<style>
+:root{--bg:#f6f8fa;--card:#fff;--ink:#16202e;--mute:#586579;--line:#dbe2ea;--ac:#0f766e;--acbg:#e0f2f1;--code:#0f1b2d;--codetx:#d6e4ff}
+@media(prefers-color-scheme:dark){:root{--bg:#0e131b;--card:#161e2a;--ink:#e6ecf4;--mute:#92a0b4;--line:#27323f;--ac:#4fd1c5;--acbg:#173a3a;--code:#0a0f17;--codetx:#cfe0ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Roboto,system-ui,sans-serif;line-height:1.65}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;padding:10px 16px}
+header h1{font-size:1.05rem;margin:0;flex:1}
+#menu{display:none}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px}
+button:hover{border-color:var(--ac)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.layout{display:grid;grid-template-columns:290px 1fr;max-width:1200px;margin:0 auto}
+nav{padding:16px;border-right:1px solid var(--line);position:sticky;top:57px;height:calc(100vh - 57px);overflow:auto}
+nav input{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin-bottom:10px}
+nav a{display:flex;gap:8px;align-items:center;padding:7px 10px;border-radius:8px;color:var(--ink);font-size:.92rem;cursor:pointer}
+nav a:hover{background:var(--acbg)}
+nav a.on{background:var(--acbg);color:var(--ac);font-weight:700}
+nav a .t{margin-left:auto;color:var(--ac)}
+main{padding:24px 22px 70px;min-width:0}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0 4px}
+.prog i{display:block;height:100%;background:var(--ac);width:0;transition:width .3s}
+h2{font-size:1.7rem;margin:0 0 4px}
+h3{font-size:1.05rem;margin:22px 0 6px;color:var(--ac)}
+.lead{color:var(--mute);margin:0 0 8px}
+.meta{display:inline-block;background:var(--acbg);color:var(--ac);border-radius:6px;padding:1px 10px;font-size:.82rem;margin-bottom:10px}
+li{margin:4px 0}
+pre{background:var(--code);color:var(--codetx);padding:14px;border-radius:10px;overflow-x:auto;font:.85rem/1.55 ui-monospace,Consolas,monospace;position:relative}
+pre button{position:absolute;top:8px;right:8px;font-size:.75rem;padding:2px 8px;background:transparent;color:var(--codetx);border-color:#ffffff40}
+.links a{display:inline-block;margin:3px 10px 3px 0;color:var(--ac);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:30px}
+label.done{display:flex;gap:8px;align-items:center;margin-top:20px}
+label.done input{width:20px;height:20px;accent-color:var(--ac)}
+@media(max-width:800px){
+ #menu{display:block}
+ .layout{grid-template-columns:1fr}
+ nav{position:fixed;inset:57px 0 0 0;z-index:4;background:var(--bg);height:auto;display:none}
+ nav.open{display:block}
+}
+</style>
+</head>
+<body>
+<header>
+  <button id="menu" aria-label="Menu">☰ Menu</button>
+  <h1>Python Full Stack: Notes and Free Links</h1>
+  <button id="theme" aria-label="Toggle theme">🌓</button>
+</header>
+<div class="layout">
+  <nav id="nav"><input id="q" placeholder="Search topics (e.g. Django)" aria-label="Search"><div id="list"></div></nav>
+  <main id="main"></main>
+</div>
+
+<script>
+const yt = q => "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+const V = (t,q) => ({t, u: yt(q)});
+const D = (t,u) => ({t,u});
+
+const MODS = [
+{id:"home", t:"Start here: Roadmap", home:true},
+{id:"py1", t:"1. Python Basics", w:"Week 1", s:"Your first steps in programming.", e:"Python for beginners full course",
+ p:["Python is interpreted: code runs line by line.","Data types: int, float, str, bool. Check with type().","Conditions: if, elif, else. Loops: for, while. Use break and continue.","input() always returns a string. Wrap it: int(input()) for numbers."],
+ c:"name = input('Your name: ')\nage = int(input('Age: '))\nif age >= 18:\n    print(name, 'is an adult')\nfor i in range(1, 6):\n    print(i)",
+ v:[V("Python Full Course (Telugu)","Python full course in Telugu"),V("Python Course (Telugu, Vamsi Bhavani)","Python course Telugu Vamsi Bhavani")],
+ d:[D("Official Python Tutorial","https://docs.python.org/3/tutorial/"),D("W3Schools Python","https://www.w3schools.com/python/"),D("Python Tutor (visualize code)","https://pythontutor.com/")]},
+{id:"py2", t:"2. Python Core (Data Structures, Functions, OOP)", w:"Week 2", s:"The part interviewers ask about most.", e:"Python data structures functions OOP tutorial",
+ p:["list (mutable), tuple (immutable), set (unique items), dict (key: value).","Functions: define with def, return a value. Learn *args and **kwargs.","List comprehension: [x*x for x in range(5)]","OOP: class, object, __init__, inheritance, polymorphism, encapsulation."],
+ c:"class Student:\n    def __init__(self, name, marks):\n        self.name = name\n        self.marks = marks\n    def grade(self):\n        return 'A' if self.marks > 80 else 'B'\n\ns = Student('Ravi', 90)\nprint(s.name, s.grade())",
+ v:[V("Python List Tuple Dict (Telugu)","Python list tuple set dictionary Telugu"),V("Python OOPs (Telugu)","Python OOPs classes objects inheritance Telugu")],
+ d:[D("Data Structures","https://docs.python.org/3/tutorial/datastructures.html"),D("Python OOP (W3Schools)","https://www.w3schools.com/python/python_classes.asp")]},
+{id:"py3", t:"3. Files, Errors, Git", w:"Week 3", s:"Learn the professional tools.", e:"Python file handling exceptions Git GitHub tutorial",
+ p:["with open('a.txt') as f: reads and writes files safely.","try / except / finally handles errors.","venv: python -m venv env, then pip install packages.","Git: init, add, commit, push. Commit to GitHub every day."],
+ c:"try:\n    with open('notes.txt') as f:\n        print(f.read())\nexcept FileNotFoundError:\n    print('File not found')\n\n# git init\n# git add .\n# git commit -m 'first commit'",
+ v:[V("Python File Handling (Telugu)","Python file handling exception handling Telugu"),V("Git and GitHub (Telugu)","Git and GitHub tutorial in Telugu")],
+ d:[D("Pro Git book (free)","https://git-scm.com/book/en/v2"),D("Python venv","https://docs.python.org/3/tutorial/venv.html")]},
+{id:"web1", t:"4. HTML and CSS", w:"Week 4", s:"The structure and style of a website.", e:"HTML CSS full course",
+ p:["Semantic tags: header, nav, main, section, footer.","Forms: input, label, button, select.","Flexbox lines items up in one direction. Grid lays out rows and columns.","Responsive design: use @media (max-width: 600px)."],
+ c:".row{display:flex;gap:12px;justify-content:space-between}\n.grid{display:grid;grid-template-columns:repeat(3,1fr)}\n@media(max-width:600px){.grid{grid-template-columns:1fr}}",
+ v:[V("HTML CSS (Telugu)","HTML CSS full course Telugu"),V("Flexbox Grid (Telugu)","CSS Flexbox Grid Telugu")],
+ d:[D("MDN Learn Web Development","https://developer.mozilla.org/en-US/docs/Learn_web_development"),D("Flexbox Froggy","https://flexboxfroggy.com/"),D("CSS Grid Garden","https://cssgridgarden.com/")]},
+{id:"web2", t:"5. JavaScript", w:"Week 5", s:"Make your pages interactive.", e:"JavaScript full course for beginners",
+ p:["let and const, arrow functions, template strings.","Array methods: map, filter, reduce, forEach.","DOM: querySelector, addEventListener, innerHTML.","fetch() calls an API; use async / await."],
+ c:"const btn = document.querySelector('#go');\nbtn.addEventListener('click', async () => {\n  const r = await fetch('https://api.github.com/users/octocat');\n  const data = await r.json();\n  console.log(data.name);\n});",
+ v:[V("JavaScript (Telugu)","JavaScript full course Telugu"),V("JS DOM and fetch (Telugu)","JavaScript DOM fetch API async await Telugu")],
+ d:[D("javascript.info","https://javascript.info/"),D("MDN JavaScript","https://developer.mozilla.org/en-US/docs/Web/JavaScript")]},
+{id:"db", t:"6. SQL and Databases", w:"Week 6", s:"Store data and query it.", e:"SQL full course for beginners",
+ p:["CRUD: INSERT, SELECT, UPDATE, DELETE.","Primary key and foreign key; one-to-many and many-to-many.","JOINs: INNER JOIN, LEFT JOIN. Also GROUP BY and HAVING.","Start with SQLite, then move to PostgreSQL."],
+ c:"SELECT s.name, c.title\nFROM students s\nJOIN courses c ON c.id = s.course_id\nWHERE s.marks > 60\nORDER BY s.name;",
+ v:[V("SQL (Telugu)","SQL full course in Telugu"),V("MySQL (Telugu)","MySQL tutorial Telugu")],
+ d:[D("SQLBolt (interactive)","https://sqlbolt.com/"),D("W3Schools SQL","https://www.w3schools.com/sql/")]},
+{id:"dj1", t:"7. Django Basics", w:"Week 7", s:"Start with the Python web framework.", e:"Django full course for beginners",
+ p:["MVT: Model (data), View (logic), Template (HTML).","django-admin startproject mysite; python manage.py startapp blog","Define tables in models.py, then run makemigrations and migrate.","Connect URLs to views with path() in urls.py."],
+ c:"# models.py\nclass Post(models.Model):\n    title = models.CharField(max_length=100)\n    body = models.TextField()\n\n# views.py\ndef home(request):\n    return render(request, 'home.html', {'posts': Post.objects.all()})",
+ v:[V("Django Full Course (Telugu)","Django full course in Telugu"),V("Django Project (Telugu)","Django tutorial beginners Telugu project")],
+ d:[D("Official Django Tutorial","https://docs.djangoproject.com/en/stable/intro/tutorial01/")]},
+{id:"dj2", t:"8. Django Advanced", w:"Week 8", s:"Login, forms and admin.", e:"Django authentication forms CRUD project",
+ p:["ModelForm builds forms from models easily.","Authentication: login, logout, register, @login_required.","Admin: admin.site.register(Post) gives a free dashboard.","Configure static and media files."],
+ c:"from django.contrib.auth.decorators import login_required\n\n@login_required\ndef dashboard(request):\n    return render(request, 'dash.html')",
+ v:[V("Django Auth (Telugu)","Django authentication login register Telugu"),V("Django CRUD (Telugu)","Django CRUD project Telugu")],
+ d:[D("Django Forms","https://docs.djangoproject.com/en/stable/topics/forms/"),D("Django Auth","https://docs.djangoproject.com/en/stable/topics/auth/")]},
+{id:"api", t:"9. REST APIs", w:"Week 9", s:"APIs that feed your frontend.", e:"Django REST Framework FastAPI tutorial",
+ p:["GET (read), POST (create), PUT (update), DELETE.","Status codes: 200, 201, 400, 401, 404, 500.","A serializer turns a model into JSON.","Use JWT or token authentication. Test with Postman."],
+ c:"from fastapi import FastAPI\napp = FastAPI()\n\n@app.get('/hello/{name}')\ndef hello(name: str):\n    return {'message': f'Hi {name}'}",
+ v:[V("Django REST Framework (Telugu)","Django REST Framework Telugu"),V("FastAPI (Telugu)","FastAPI tutorial Telugu")],
+ d:[D("Django REST Framework","https://www.django-rest-framework.org/"),D("FastAPI Tutorial","https://fastapi.tiangolo.com/tutorial/")]},
+{id:"fe", t:"10. Frontend Integration", w:"Week 10", s:"Connect your API to a website.", e:"React JS full course",
+ p:["React: components, props, state (useState), useEffect.","Or use plain JS with fetch.","CORS error? Configure django-cors-headers.","Keep API URLs and keys in a .env file."],
+ c:"function Posts(){\n  const [posts, setPosts] = useState([]);\n  useEffect(() => {\n    fetch('/api/posts/').then(r => r.json()).then(setPosts);\n  }, []);\n  return posts.map(p => <h3 key={p.id}>{p.title}</h3>);\n}",
+ v:[V("React JS (Telugu)","React JS full course Telugu"),V("React with Django (Telugu)","React Django REST API integration Telugu")],
+ d:[D("React Learn","https://react.dev/learn")]},
+{id:"dep", t:"11. Testing and Deployment", w:"Week 11", s:"Put your project online.", e:"pytest Docker Django deployment tutorial",
+ p:["pytest unit tests: use plain assert.","Docker: a Dockerfile makes your app run the same everywhere.","Set DEBUG=False and keep SECRET_KEY in .env.","Deploy free on Render or Railway."],
+ c:"# test_math.py\ndef add(a, b):\n    return a + b\n\ndef test_add():\n    assert add(2, 3) == 5\n\n# run: pytest",
+ v:[V("Docker (Telugu)","Docker tutorial Telugu"),V("Django Deployment (Telugu)","Django project deployment Telugu")],
+ d:[D("pytest","https://docs.pytest.org/"),D("Docker Get Started","https://docs.docker.com/get-started/"),D("Render Docs","https://render.com/docs")]},
+{id:"job", t:"12. Capstone and Interviews", w:"Week 12", s:"Get ready for the job.", e:"Python Django interview questions and answers",
+ p:["Capstone: a project with login, CRUD, API and frontend (e.g. expense tracker). Write a clear README.","Solve 2 DSA problems daily: arrays, strings, hash maps.","Common questions: list vs tuple, decorators, generators, Django MVT, ORM, REST, SQL JOINs.","Put your GitHub link and live project link on your resume."],
+ v:[V("Python Interview Questions (Telugu)","Python interview questions and answers Telugu"),V("Django Interview Questions (Telugu)","Django interview questions Telugu")],
+ d:[D("HackerRank Python","https://www.hackerrank.com/domains/python"),D("LeetCode","https://leetcode.com/problemlist/all/"),D("roadmap.sh Python","https://roadmap.sh/python")]}
+];
+
+const KEY="pyfs-learn-en-v1"; let done={}, cur="home";
+try{done=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}};
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const lk=a=>a.map(x=>`<a href="${x.u}" target="_blank" rel="noopener">${x.t}</a>`).join("");
+
+function nav(){
+  const f=q.value.trim().toLowerCase();
+  list.innerHTML=MODS.filter(m=>!f||(m.t+(m.s||"")).toLowerCase().includes(f))
+    .map(m=>`<a data-id="${m.id}" class="${m.id===cur?"on":""}">${m.t}<span class="t">${done[m.id]?"✓":""}</span></a>`).join("")||"<p>No topics found</p>";
+  list.querySelectorAll("a").forEach(a=>a.onclick=()=>go(a.dataset.id));
+}
+function go(id){cur=id;document.getElementById("nav").classList.remove("open");show();nav();scrollTo(0,0)}
+function show(){
+  const i=MODS.findIndex(m=>m.id===cur), m=MODS[i], n=MODS.length-1, d=Object.values(done).filter(Boolean).length;
+  const bar=`<div class="prog"><i style="width:${d/n*100}%"></i></div><small class="lead">${d}/${n} modules completed</small>`;
+  if(m.home){
+    main.innerHTML=`<h2>Python Full Stack: 90-Day Roadmap</h2><p class="lead">Every module has notes, a code example, free Telugu videos, an English video search, and free web resources.</p>${bar}
+    <div class="card"><h3>How to study</h3><ul><li>3 to 4 hours a day: new topic in the morning, practice in the evening, revision at night.</li><li>After each video, type the code yourself.</li><li>One module per week. Tick it when you finish.</li><li>Commit to GitHub every day.</li></ul></div>
+    <div class="card"><h3>3 projects to build</h3><ul><li>Week 5: JavaScript to-do app</li><li>Week 8: Django blog with login and comments</li><li>Week 12: API + frontend capstone, deployed live</li></ul></div>
+    <p class="lead">Use the menu on the left and begin with Module 1.</p><div class="pn"><span></span><button id="nx">Module 1 ➜</button></div>`;
+    document.getElementById("nx").onclick=()=>go("py1");return;
+  }
+  main.innerHTML=`<span class="meta">${m.w}</span><h2>${m.t}</h2><p class="lead">${m.s}</p>${bar}
+   <h3>Key notes</h3><ul>${m.p.map(x=>`<li>${x}</li>`).join("")}</ul>
+   ${m.c?`<h3>Code example</h3><pre><button>Copy</button><code>${esc(m.c)}</code></pre>`:""}
+   <h3>Free videos on YouTube</h3><div class="links">${lk(m.v)}<a href="${yt(m.e)}" target="_blank" rel="noopener">Search in English</a></div>
+   <p class="lead" style="font-size:.8rem">These are YouTube search links. Pick a channel you like and finish one playlist.</p>
+   <h3>Free web resources</h3><div class="links">${lk(m.d)}</div>
+   <label class="done"><input type="checkbox" id="ck" ${done[m.id]?"checked":""}> I completed this module</label>
+   <div class="pn"><button id="pv">⬅ Previous</button><button id="nx">Next ➜</button></div>`;
+  ck.onchange=e=>{done[m.id]=e.target.checked;save();show();nav()};
+  pv.onclick=()=>go(MODS[i-1].id);
+  if(i<MODS.length-1)nx.onclick=()=>go(MODS[i+1].id);else nx.style.display="none";
+  const b=main.querySelector("pre button");
+  if(b)b.onclick=()=>{navigator.clipboard?.writeText(m.c);b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500)};
+}
+q.oninput=nav;
+menu.onclick=()=>document.getElementById("nav").classList.toggle("open");
+theme.onclick=()=>{const r=document.documentElement;const dark=getComputedStyle(r).getPropertyValue("--bg").trim()==="#0e131b";
+  const v=dark?{"--bg":"#f6f8fa","--card":"#fff","--ink":"#16202e","--mute":"#586579","--line":"#dbe2ea","--ac":"#0f766e","--acbg":"#e0f2f1"}:{"--bg":"#0e131b","--card":"#161e2a","--ink":"#e6ecf4","--mute":"#92a0b4","--line":"#27323f","--ac":"#4fd1c5","--acbg":"#173a3a"};
+  for(const k in v)r.style.setProperty(k,v[k])};
+show();nav();
+</script>
+</body>
+</html>
